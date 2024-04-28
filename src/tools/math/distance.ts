@@ -15,27 +15,29 @@ export const calculateDistance = (
 };
 
 
-export const sortByDistance = (
+export const sortCitiesByDistance = (
     citySelected: Partial<City>,
     cities: City[],
     quantity: number
   ) => {
-    return cities
+    const sorted = cities
       .sort((a, b) => {
         const distanceA = calculateDistance(
           Number(citySelected.lat),
-          Number(citySelected.lng),
           Number(a.lat),
+          Number(citySelected.lng),
           Number(a.lng)
         );
         const distanceB = calculateDistance(
           Number(citySelected.lat),
-          Number(citySelected.lng),
           Number(b.lat),
+          Number(citySelected.lng),
           Number(b.lng)
         );
 
-        return distanceA - distanceB;
+        return    distanceA - distanceB
       })
       .slice(0, quantity);
+      return sorted;
+      
   };

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { sortByDistance } from "../tools/math/distance";
+import { sortCitiesByDistance } from "../tools/math/distance";
 import { City } from "../types/City";
 
 interface Props {
@@ -9,11 +9,11 @@ interface Props {
 
 export const useSelectedCountry = ({ quantity, cities }: Props) => {
   const [selected, setSelected] = useState<Partial<City>>();
+  const [listNearCity,setNearCity] = useState<City[]>();
   const handleSelectCity = () => {
     if (selected) {
-      const resolve = sortByDistance(selected, cities, quantity);
-
-      return resolve;
+      const resolve = sortCitiesByDistance(selected, cities, quantity);
+      setNearCity(resolve);
     }
   };
 
@@ -21,5 +21,6 @@ export const useSelectedCountry = ({ quantity, cities }: Props) => {
     selected,
     setSelected,
     handleSelectCity,
+    listNearCity
   };
 };
