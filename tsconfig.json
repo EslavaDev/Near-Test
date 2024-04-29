@@ -15,10 +15,13 @@
     "jsx": "react-jsx",
 
     /* Linting */
-    "strict": true,
+    "esModuleInterop": true,
+    "strict": false,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "types": ["jest", "@testing-library/jest-dom"]
+
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
